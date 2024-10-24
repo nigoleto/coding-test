@@ -18,7 +18,6 @@ class Solution {
         for(String i: map.keySet()) {
             answer[map.get(i)] = i;
         }
-
         
         return answer;
     }
