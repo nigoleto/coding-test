@@ -27,20 +27,23 @@ class Solution {
         HashMap<String, Integer> map = new HashMap<>();
         
         for(int i = 0; i < players.length; i++) {
-            map.put(players[i], i);   
+            map.put(players[i], i);
         };
-
-        int index = 0;
         
         for(String calling : callings) {
-            index = map.get(calling);
+            int index = map.get(calling);
+                
+            String prePlayer = players[index - 1];
+
+            // players 배열에서 자리 교환
+            players[index] = prePlayer;
+            players[index - 1] = calling;
+
+            // HashMap에서도 등수 정보 업데이트
+            map.put(calling, index - 1);
+            map.put(prePlayer, index);
         }
         
-        String[] answer = new String[map.size()];
-        
-        for(String i: map.keySet()) {
-            answer[map.get(i)] = i;
-        }
-        
+        return players;
     }
 }
