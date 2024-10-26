@@ -66,4 +66,4 @@ class Solution {
 // park는 String배열
 // split -> charAt()로 변경가능
 // indexOf() 로 String 내의 인덱스 바로 찾을 수 있음 (이중 for문 사용안해도 됨)
-// for문 안에 switch문 안에 for문 코드 정리 필요
+// for문 안에 switch문 안에 for문 코드 정리 필요할듯
