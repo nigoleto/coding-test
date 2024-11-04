@@ -36,7 +36,7 @@ class Solution {
             
             int resultDate = addDate[0]*10000 + addDate[1]*100 + addDate[2];
             
-            if(resultDate > nowDate) {
+            if(resultDate < nowDate) {
                answer.add(i+1); 
             }
         }
