@@ -15,6 +15,15 @@ class Solution {
         //         answer ++;
         //     }
         // }
+
+        for (String bab : babbling) {
+            if (bab
+                .replaceAll("(aya|ye|woo|ma)\\1", "1")
+                .replaceAll("aya|ye|woo|ma", "")
+                .isEmpty()) {
+                answer++;
+            }
+        }
         
         return answer;
     }
