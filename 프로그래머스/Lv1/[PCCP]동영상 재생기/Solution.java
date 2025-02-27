@@ -80,3 +80,41 @@ class Solution {
         return minutes + ":" + seconds;
     }
 }
+
+
+// 젤 위의 풀이가 틀린 이유는 검증로직이 이상해서지 LocalTime을 사용해서가 아니었다.
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+class Solution {
+    public String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
+        LocalTime max = parsing(video_len);
+        LocalTime p = parsing(pos);
+        LocalTime s = parsing(op_start);
+        LocalTime e = parsing(op_end);
+        
+        if ((p.isAfter(s) || p.equals(s)) && p.isBefore(e)) {
+            p = e;
+        }
+        
+        for (String command : commands) {
+            if (command.equals("next")) {
+                p = p.plusSeconds(10).isAfter(max) ? max : p.plusSeconds(10);
+            };
+            if (command.equals("prev")) {
+                p = p.minusSeconds(10).isAfter(LocalTime.of(23,0,0)) ? LocalTime.of(0,0,0) : p.minusSeconds(10);
+            };
+            if ((p.isAfter(s) || p.equals(s)) && p.isBefore(e)) {
+                p = e;
+            }
+        }
+        
+        return p.format(DateTimeFormatter.ofPattern("mm:ss"));
+     }
+    
+    public static LocalTime parsing(String time) {
+        int minutes = Integer.parseInt(time.split(":")[0]);
+        int seconds = Integer.parseInt(time.split(":")[1]);
+        return LocalTime.of(0,minutes,seconds); 
+    }
+}
