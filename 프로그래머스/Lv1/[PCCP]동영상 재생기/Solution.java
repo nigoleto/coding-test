@@ -44,3 +44,39 @@ class Solution {
 
 // 그냥 시간이 있는 문제는 60초가 넘어가면 1분이 되는게 귀찮으니까
 // 최소단위인 "초"로 다 계산해서 처리하는게 좋은 듯 하다.
+
+//다시 푼거
+class Solution {
+    public String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
+        
+        if (toSec(pos) >= toSec(op_start) && toSec(pos) < toSec(op_end)) {
+            pos = op_end;
+        }
+        
+        for (String command : commands) {
+            if(command.equals("next")) {
+                pos = toStr(Math.min(toSec(pos)+10 , toSec(video_len)));
+            }
+            if(command.equals("prev")) {
+                pos = toStr(Math.max(toSec(pos)-10, 0));
+            }
+            if (toSec(pos) >= toSec(op_start) && toSec(pos) < toSec(op_end)) {
+                pos = op_end;
+            }
+        }
+        
+        return pos;
+     }
+    
+    public static int toSec(String time) {
+        int minutes = Integer.parseInt(time.split(":")[0]);
+        int seconds = Integer.parseInt(time.split(":")[1]);
+        return minutes * 60 + seconds;
+    }
+    
+    public static String toStr(int time) {
+        String minutes = (""+time / 60).length() < 2 ? "0" + time / 60 : "" + time / 60;
+        String seconds = (""+time % 60).length() < 2 ? "0" + time % 60 : "" + time % 60;
+        return minutes + ":" + seconds;
+    }
+}
