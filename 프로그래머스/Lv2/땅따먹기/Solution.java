@@ -100,4 +100,65 @@ class Solution {
         
         return answer;
     }
+
+
+        int solution2(int[][] land) {
+        int answer = 0;
+            int max = 0;
+            int maxIdx = 0;
+            int second = 0;
+
+            for(int i = 0; i < land.length; i++) {
+
+                for(int j = 0; j < land[0].length; j++) {
+                    if (max < land[i][j]) {
+                        max = land[i][j];
+                        maxIdx = j;
+                    }
+                }
+
+                for(int j = 0; j < land[0].length; j++) {
+                    if (max = land[i][j]) {
+                        continue;
+                    } else if (second < land[i][j]) {
+                        second = land[i][j];
+                    }
+                }
+            }
+
+            answer += max;
+        
+            for(int i = 0; i < land.length; i++) {
+                int maxTemp = 0;
+                int maxIdxTemp = 0;
+                int secondTemp = 0;
+
+                for(int j = 0; j < land[0].length; j++) {
+                    if (maxTemp < land[i][j]) {
+                        maxTemp = land[i][j];
+                        maxIdxTemp = j;
+                    }
+                }
+
+                for(int j = 0; j < land[0].length; j++) {
+                    if (maxTemp = land[i][j]) {
+                        continue;
+                    } else if (secondTemp < land[i][j]) {
+                        secondTemp = land[i][j];
+                    }
+                }
+                
+                if(maxIdx == maxIdxTemp) {
+                    answer += secondTemp;
+                } else {
+                    answer += maxTemp;
+                }
+
+                max = maxTemp;
+                maxIdx = maxIdxTemp;
+                second = secondTemp;
+            }
+        
+        return answer;
+    }
 }
