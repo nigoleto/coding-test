@@ -159,9 +159,7 @@ class Solution {
                 second = secondTemp;
             }
         
-        return answer;
-
-            
+        return answer;            
     }
 }
 
