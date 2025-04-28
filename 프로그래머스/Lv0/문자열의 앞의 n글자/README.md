@@ -16,4 +16,4 @@ my_string은 숫자와 알파벳으로 이루어져 있습니다.
 예제 1번의 my_string에서 앞의 11글자는 "ProgrammerS"이므로 이 문자열을 return 합니다.
 #### 입출력 예 #2
 
-예제 2번의 my_string에서 앞의 5글자는 "He110"이므로 이 문자열을 return 합니다.
+예제 2번의 my_string에서 앞의 5글자는 "He110"이므로 이 문자열을 return 합니다.   
